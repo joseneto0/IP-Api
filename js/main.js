@@ -3,14 +3,19 @@ let ips = [];
 let id = 1;
 
 async function clickSubmit(event){
-    let ip = input.value;
-    let url = `https://ipinfo.io/${ip}/json?token=0ce00c5af1537e`;
-    event.preventDefault();
-    fetch(url).then(
-        (response) => response.json()
-    ).then(
-        (jsonResponse) => insert(jsonResponse)
-    )
+    if (input.value == ""){
+        alert("Digite um ip antes de buscar")
+    } else {
+        let ip = input.value;
+        let url = `https://ipinfo.io/${ip}/json?token=0ce00c5af1537e`;
+        event.preventDefault();
+        fetch(url).then(
+            (response) => response.json()
+        ).then(
+            (jsonResponse) => insert(jsonResponse)
+        )
+    }
+    
 }
 
 function insert(json){
